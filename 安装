@@ -1,0 +1,28 @@
+# 安装angr
+####  angr是一个python库，所以它运行在python环境的。它的构造基于python2，pyhon3k在以后也会支持，但我们现在可能更新的不那么及时。
+####  我们强烈推荐用python virtual environment来安装和使用angr。一些angr的依赖（z3， pyvex）需要从原始代码中分离出来。如果你已经安装了libz3或者libVEX
+你一定不会希望将原始的库进行覆盖。总的来说，不要在virtulenv之外安装angr。
+
+## 依赖
+#### 所有python依赖都通过pip安装或者运行setup.py脚本。然而也需要构建一些C程序，所以你需要一个良好的构建环境以及python开发头。在依赖安装的过程中的某些地方，
+你需要安装python library cffi，但是（至少在linux）上除非安装了libffi，要不然没法运行。
+
+####在ubuntu上，你需要 sudo apt-get install python-dev libffi-dev build-essential virtualenvwrapper.
+如果你需要安装angr-management，你需要sudo apt-get install libqt4-dev graphviz-dev
+
+## 更多操作系统， 所有*nix系统
+#### mkvirtulenv angr && pip install angr在大部分情况下会用到的非常多，因为angr已经被发布在Pyhon Package Index上了
+Fish（shell）用户也可以用virtualfish 或者 virtualenv包：vf new angr && vf activate angr && pip install angr
+如果失败了，你可以通过https://github.com/angr这个仓库来安装，依赖库如下所示
+##### ·claripy（约束求解的一个库）
+##### ·archinfo
+##### ·pyvex
+##### ·cle
+##### ·angr
+
+## Mac OS X
+#### pip install angr 先保证可以用，但这里会出一些警告
+#### 如果你用Clang跑script不幸跑垮了，试试GCC
+##### brew install gcc
+##### env CC=/usr/local/bin/gcc-6 pip install angr
+#### 在安装完angr后，你需要修复一下angr自带库的一些路径
